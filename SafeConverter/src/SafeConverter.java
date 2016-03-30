@@ -7,6 +7,8 @@ public class SafeConverter
 {
 	private JPanel panel;
 	private JButton button;
+	private JButton button2;
+	private JButton button3;
 	private JTextField text;
 	private JLabel label;
 	
@@ -49,8 +51,7 @@ public class SafeConverter
 					try
 					{
 						double tempInF = Double.parseDouble(input);//convert String to double
-						double tempInC = (tempInF-32)*(5.0/9.0); //convert F to C
-						msg = "Temp in C: " + String.format("%.2f",tempInC);//convert double to String and
+						msg = String.format("%.2f",cToF(tempInF));//convert double to String and
 					       //only display 2 places past decimal
 					}
 					catch(Exception exception)
@@ -79,6 +80,15 @@ public class SafeConverter
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	private double fToC(double temp)
+	{
+		return (temp - 32)*5.0/9;
+	}
+	
+	private double cToF(double temp)
+	{
+		return temp*9.0/5+32;
+	}
 	public static void main(String[] args)
 	{
 		createAndDisplayGUI();
