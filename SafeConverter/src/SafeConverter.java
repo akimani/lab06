@@ -46,11 +46,18 @@ public class SafeConverter
 				}
 				else
 				{
-					double tempInF = Double.parseDouble(input);//convert String to double
-					double tempInC = (tempInF-32)*(5.0/9.0); //convert F to C
-					msg = "Temp in C: " + String.format("%.2f",tempInC);//convert double to String and
-												       //only display 2 places past decimal
-					
+					try
+					{
+						double tempInF = Double.parseDouble(input);//convert String to double
+						double tempInC = (tempInF-32)*(5.0/9.0); //convert F to C
+						msg = "Temp in C: " + String.format("%.2f",tempInC);//convert double to String and
+					       //only display 2 places past decimal
+					}
+					catch(Exception exception)
+					{
+						msg = "Invalid input";
+					}
+										
 				}
 				
 				label.setText(msg);
@@ -69,6 +76,7 @@ public class SafeConverter
 		frame.getContentPane().add(demo.getContent());
 		frame.pack();
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public static void main(String[] args)
