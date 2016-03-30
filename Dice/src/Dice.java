@@ -30,12 +30,27 @@ public class Dice {
 				public void actionPerformed(ActionEvent e)
 				{
 					String input = text.getText();
-					int numSide = Integer.parseInt(input);
-					Random rand = new Random();
-					int randNum = rand.nextInt(numSide) + 1;
-					String newTetx = Integer.toString(randNum);
-					label.setText(newTetx);
-					System.out.println(newTetx);
+					String newText = "";
+					//Test the input to make sure is positive integer
+					try
+					{
+						int numSide = Integer.parseInt(input);
+						if(numSide < 1 )
+						{
+							newText = "Invalid input, must be atleast 1";
+						}
+						else
+						{
+							newText = Integer.toString(drawRandom(numSide));
+						}
+					}
+					catch(NumberFormatException exception)
+					{
+						newText = "Invalid input, must be an integer";
+					}					
+					 
+					label.setText(newText);
+					System.out.println(newText);
 					
 				}
 		};
@@ -54,6 +69,13 @@ public class Dice {
 		frame.getContentPane().add(roll.getContent());
 		frame.pack();
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	private int drawRandom(int num)
+	{
+		Random rand = new Random();
+		return rand.nextInt(num) + 1;
 	}
 	
 	public static void main(String[] args)
