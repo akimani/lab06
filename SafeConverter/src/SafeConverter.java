@@ -51,7 +51,7 @@ public class SafeConverter
 					try
 					{
 						double tempInF = Double.parseDouble(input);//convert String to double
-						msg = String.format("%.2f",fToK(tempInF));//convert double to String and
+						msg = String.format("%.2f",cToK(tempInF));//convert double to String and
 					       //only display 2 places past decimal
 					}
 					catch(Exception exception)
@@ -93,6 +93,11 @@ public class SafeConverter
 	private double fToK(double temp)
 	{
 		return fToC(temp) + 273.15;
+	}
+	
+	private double cToK(double temp)
+	{
+		return temp + 273.15;
 	}
 	public static void main(String[] args)
 	{
