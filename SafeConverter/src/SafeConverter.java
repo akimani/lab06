@@ -21,9 +21,9 @@ class SafeConverter
 	public SafeConverter()
 	{
 		
-		panel = new JPanel();
-		text = new JTextField(3);//3 cols, not 20 chars
-		label = new JLabel("Enter a temperature from F to C");
+		panel = new JPanel(new GridLayout(8,0));
+		text = new JTextField(3);
+		label = new JLabel("Enter a temperature ");
 		button = new JButton("Convert C to F");
 		button2 = new JButton("Convert F to C");
 		button3 = new JButton("Convert C to K");
@@ -41,15 +41,16 @@ class SafeConverter
 		
 		//load the panel
 		panel.add(text);
-		
-		panel.add(button);
+		panel.add(label);		
+		panel.add(button);		
 		panel.add(button2);
 		panel.add(button3);
 		panel.add(button4);
 		panel.add(button5);
 		panel.add(button6);
 		
-		panel.add(label);
+		
+		//panel.add(label);
 	}
 	
 	public Component getContent()
